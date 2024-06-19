@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-todosimplewebapi-auto-deployment
+  labels:
+    app: aks-todosimplewebapi-auto-deployment
+    kubernetes.azure.com/generator: devhub
+  namespace: todosimplewebapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-todosimplewebapi-auto-deployment
+  template:
+    metadata:
+      labels:
+        app: aks-todosimplewebapi-auto-deployment
+    spec:
+      containers:
+        - name: aks-todosimplewebapi-auto-deployment
+          image: gbbaksday.azurecr.io/image-workflow-1718795381503:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 7267

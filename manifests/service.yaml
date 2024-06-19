@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-todosimplewebapi-auto-deployment
+  namespace: todosimplewebapi
+  labels:
+    kubernetes.azure.com/generator: devhub
+spec:
+  type: LoadBalancer
+  selector:
+    app: aks-todosimplewebapi-auto-deployment
+  ports:
+    - protocol: TCP
+      port: 7267
+      targetPort: 7267
